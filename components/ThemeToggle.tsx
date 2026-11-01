@@ -10,7 +10,9 @@ function readTheme(): ThemeState {
     const s = JSON.parse(localStorage.getItem(THEME_KEY) || "null");
     if (s?.mode === "random" || s?.mode === "dark" || s?.mode === "light") return s;
   } catch {}
-  return { mode: document.documentElement.dataset.theme === "dark" ? "dark" : "light" };
+  const shown = document.documentElement.dataset.theme;
+  if (shown) return { mode: shown === "dark" ? "dark" : "light" };
+  return { mode: matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" };
 }
 
 /** ☾/☀ light–dark switch, 🎲 random curated palette and 🔊/🔇 sound switch. */
@@ -30,7 +32,10 @@ export function ThemeToggle({
   const flashTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
-    setTheme(readTheme());
+    const t = readTheme();
+    // Pages that re-render the whole document (e.g. "not found") can lose the theme the boot script set.
+    if (!document.documentElement.dataset.theme) applyTheme(t);
+    setTheme(t);
     setMutedState(isMuted());
     return onMutedChange(setMutedState);
   }, []);
