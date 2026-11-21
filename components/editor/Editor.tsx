@@ -538,6 +538,12 @@ export function Editor({
               )}
             </div>
           </div>
+          {/* A big Save under the panel on every screen (the Share tab has its own). */}
+          {panel !== "share" && (
+            <button className="btn btn-primary mt-4 w-full py-3 text-lg" onClick={save} disabled={saving}>
+              {saving ? "Saving…" : id ? "Save changes" : "Save & get link ✦"}
+            </button>
+          )}
         </aside>
       </main>
       <SiteFooter className="-mt-10" />
