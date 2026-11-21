@@ -1,5 +1,4 @@
 "use client"; // Error boundaries must be Client Components
-import Link from "next/link";
 import { useEffect } from "react";
 import { ErrorScreen } from "@/components/ErrorScreen";
 
@@ -22,9 +21,9 @@ export default function ErrorPage({ error, retry }: { error: unknown; retry: () 
           <button type="button" className="btn btn-primary" onClick={() => retry()}>
             ↻ Try again
           </button>
-          <Link href="/" className="btn btn-ghost">
+          <a href="/" className="btn btn-ghost">
             Go home
-          </Link>
+          </a>
         </>
       }
     />

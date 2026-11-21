@@ -1,6 +1,5 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeRestore } from "./ThemeRestore";
 import { SiteFooter } from "./SiteFooter";
 
 /** Shared layout for the 404 and crash pages: site header, a cassette with its tape spilling out, message, actions. */
@@ -8,10 +7,11 @@ export function ErrorScreen({ code, title, message, actions, detail }: { code: s
   return (
     <div className="flex min-h-dvh flex-col">
       <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-4">
-        <Link href="/" className="font-display text-2xl">
+        {/* Plain links: the crash page is preloaded on every route, so it stays free of Next.js Link code. */}
+        <a href="/" className="font-display text-2xl">
           Tapiee<span className="text-orange">.</span>
-        </Link>
-        <ThemeToggle />
+        </a>
+        <ThemeRestore />
       </header>
 
       <main className="mx-auto grid w-full max-w-xl flex-1 place-items-center px-6 py-10 text-center">
