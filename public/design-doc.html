@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapiee Design System</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Tapiee's colours, type, spacing, motion and components.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Shrikhand&family=Space+Grotesk:wght@400;600;700&family=Special+Elite&family=VT323&display=swap">
+<style>
+  :root { --cream: #f4ead5; --paper: #fffaf0; --field: #ffffff; --ink: #2b2118; --ink-muted: rgba(43, 33, 24, 0.7); --shadow: #2b2118; --dot: rgba(107, 66, 38, 0.06); --orange: #e8742c; --on-orange: #fffaf0; --mustard: #f2b134; --cherry: #d1495b; --teal: #2a9d8f; --denim: #3d5a80; --brown: #6b4226; --device-top: #f8f1e3; --device-bottom: #e7dbc3; --lcd-glow: #d3e0b4; --lcd: #b4c592; --lcd-ink: #1f2a17; --lcd-amber: #ffb547; --shadow-sm: 2px 2px 0 #2b2118; --shadow-btn: 3px 3px 0 #2b2118; --shadow-btn-hover: 4px 4px 0 #2b2118; --shadow-btn-press: 1px 1px 0 #2b2118; --shadow-card: 5px 5px 0 #2b2118; --shadow-device: 6px 6px 0 #2b2118; --focus-glow: 0 0 0 3px rgba(232, 116, 44, 0.35); --space-1: 4px; --space-1-5: 6px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --radius-lg: 8px; --radius-lcd: 10px; --radius-xl: 12px; --radius-2xl: 16px; --radius-full: 9999px; --dur-press: 120ms; --dur-ui: 220ms; --dur-move: 400ms; --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --cream: #15110e; --paper: #211a15; --field: #2a221c; --ink: #efe6d8; --ink-muted: rgba(239, 230, 216, 0.7); --shadow: #000000; --dot: rgba(255, 236, 210, 0.05); --orange: #ec8a4b; --on-orange: #1a120c; --mustard: #d9a441; --cherry: #d1495b; --teal: #2a9d8f; --denim: #3d5a80; --brown: #6b4226; --device-top: #f8f1e3; --device-bottom: #e7dbc3; --lcd-glow: #d3e0b4; --lcd: #b4c592; --lcd-ink: #1f2a17; --lcd-amber: #ffb547; --shadow-sm: 2px 2px 0 #000000; --shadow-btn: 3px 3px 0 #000000; --shadow-btn-hover: 4px 4px 0 #000000; --shadow-btn-press: 1px 1px 0 #000000; --shadow-card: 5px 5px 0 #000000; --shadow-device: 6px 6px 0 #000000; --focus-glow: 0 0 0 3px rgba(232, 116, 44, 0.35); color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background-color: var(--cream); color: var(--ink); font: 16px/1.6 "Space Grotesk", system-ui, sans-serif;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1.5px), radial-gradient(var(--dot) 1px, transparent 1.5px);
+    background-size: 7px 7px, 11px 11px; background-position: 0 0, 3px 5px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-right, 0px)) 64px max(16px, env(safe-area-inset-left, 0px)); }
+  .top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .top .logo { font: 400 26px/1 "Shrikhand", serif; color: var(--ink); text-decoration: none; }
+  .top .logo b { color: var(--orange); font-weight: 400; }
+  .top nav { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px; }
+  .top nav a { font-size: 13px; color: var(--ink); text-decoration: none; padding: 4px 10px; border: 2px solid color-mix(in srgb, var(--ink) 20%, transparent); border-radius: 8px; }
+  .top nav a:hover { border-color: var(--ink); }
+  .cover-box { margin: 20px 0 8px; border: 2px solid var(--ink); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); background: var(--cream); }
+  .cover-scale { width: 100%; aspect-ratio: 960 / 288; container-type: inline-size; position: relative; }
+  .cover-scale > .cover { position: absolute; top: 0; left: 0; transform-origin: 0 0; transform: scale(calc(100cqw / 960px)); }
+  @supports not (width: 1cqw) { .cover-scale { overflow-x: auto; aspect-ratio: auto; } .cover-scale > .cover { position: static; transform: none; } }
+  section { margin-top: 48px; scroll-margin-top: 12px; }
+  h2 { font: 400 32px/1.15 "Shrikhand", serif; margin: 0 0 8px; text-wrap: balance; }
+  h2 small { display: block; font: 13px/1.4 "Special Elite", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+  h3 { font: 700 20px/1.3 "Space Grotesk", sans-serif; margin: 28px 0 8px; }
+  h4 { font: 700 16px/1.3 "Space Grotesk", sans-serif; margin: 20px 0 6px; }
+  .prose { max-width: 70ch; }
+  .prose p, .prose li { color: var(--ink); }
+  code { font: 13px ui-monospace, Consolas, monospace; background: color-mix(in srgb, var(--ink) 8%, transparent); padding: 1px 5px; border-radius: 5px; overflow-wrap: anywhere; }
+  .table { overflow-x: auto; margin: 12px 0; border: 2px solid var(--ink); border-radius: 12px; background: var(--paper); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); vertical-align: top; }
+  th { font: 600 12px "Special Elite", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+  .swatches { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .sw { display: flex; gap: 12px; padding: 12px; background: var(--paper); border: 2px solid var(--ink); border-radius: 14px; min-width: 0; }
+  .chips { display: flex; flex-direction: column; gap: 4px; flex: none; }
+  .chips i { width: 44px; height: 26px; border-radius: 6px; border: 2px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+  .sw-text { display: grid; gap: 2px; min-width: 0; }
+  .sw-text small, .scale small, .type-meta small { color: var(--ink-muted); font-size: 12.5px; line-height: 1.45; }
+  .legend { font-size: 13px; color: var(--ink-muted); }
+  .type-row { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 16px; align-items: center; padding: 14px 0; border-bottom: 1px dashed color-mix(in srgb, var(--ink) 18%, transparent); }
+  .type-meta { display: grid; gap: 2px; }
+  .type-sample { overflow-wrap: anywhere; }
+  .scale { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+  .scale li { display: grid; grid-template-columns: 110px minmax(0, 120px) minmax(0, 90px) minmax(0, 1fr); gap: 12px; align-items: center; }
+  .viz { display: flex; align-items: center; min-height: 40px; }
+  .bar { display: block; height: 14px; background: var(--orange); border-radius: 3px; }
+  .box { display: block; width: 52px; height: 36px; background: var(--paper); border: 2px solid var(--ink); }
+  .comp { margin-top: 26px; padding-top: 6px; border-top: 2px dashed color-mix(in srgb, var(--ink) 15%, transparent); }
+  .ds-preview { margin: 10px 0 14px; border: 2px solid var(--ink); border-radius: 14px; background: var(--cream); overflow-x: auto; }
+  .mark { width: 96px; height: 96px; display: block; }
+  .logo-row { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; margin-top: 12px; }
+  .logo-row .wordmark { font: 400 48px/1 "Shrikhand", serif; }
+  .logo-row .wordmark b { color: var(--orange); font-weight: 400; }
+  footer { margin-top: 64px; font-size: 13px; color: var(--ink-muted); text-align: center; }
+  footer a { color: var(--orange); }
+  :where(a):focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 8px; }
+  .to-top { display: none; }
+  /* Phones: the section menu sticks to the top, each section's title sticks under it (so you always see where you are),
+     and a floating button jumps back to the top. No JavaScript. */
+  @media (max-width: 900px) {
+    .top { position: sticky; top: 0; z-index: 30; flex-wrap: nowrap; gap: 10px; margin: -24px -16px 0; padding: 8px 16px;
+      background: var(--cream); border-bottom: 2px solid color-mix(in srgb, var(--ink) 15%, transparent); }
+    .top .logo { font-size: 20px; flex: none; }
+    .top nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .top nav::-webkit-scrollbar { display: none; }
+    .top nav a { flex: none; white-space: nowrap; border-radius: 999px; background: var(--paper); }
+    section { scroll-margin-top: 50px; }
+    section > h2 { position: sticky; top: 46px; z-index: 20; margin: 0 -16px 8px; padding: 8px 16px; font-size: 20px; line-height: 1.2;
+      background: var(--cream); border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+    section > h2 small { display: inline; margin: 0 8px 0 0; font-size: 12px; }
+    .to-top { display: grid; place-items: center; position: fixed; z-index: 40; width: 46px; height: 46px; border-radius: 999px;
+      right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
+      background: var(--orange); color: var(--on-orange); font: 700 20px/1 system-ui, sans-serif; text-decoration: none;
+      border: 2px solid var(--ink); box-shadow: var(--shadow-btn); }
+  }
+  @media (max-width: 640px) {
+    .type-row { grid-template-columns: 1fr; gap: 6px; }
+    .scale li { grid-template-columns: 72px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: start; }
+    .scale li .viz { grid-row: 1 / span 3; min-height: 0; padding-top: 4px; }
+    .scale li > b, .scale li > code, .scale li > small { grid-column: 2; justify-self: start; }
+  }
+  /* ---- Component styles (bundle.css) ---- */
+  
+/* Tapiee components: plain-CSS translation of the classes in app/globals.css (Tailwind @apply expanded).
+   Colours come from the system's tokens; the second value is the light theme's, as a fallback. */
+
+
+.t-display { font-family: "Shrikhand", serif; font-weight: 400; }
+.t-eyebrow { font-family: "Special Elite", monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange, #e8742c); }
+.t-hand { font-family: "Permanent Marker", cursive; }
+.t-muted { color: var(--ink-muted, rgba(43, 33, 24, 0.7)); }
+.logo { font-family: "Shrikhand", serif; font-size: 24px; line-height: 32px; }
+.logo b { color: var(--orange, #e8742c); font-weight: 400; }
+
+/* Keyboard focus ring (all interactive elements) */
+:where(button, a, input):focus-visible {
+  outline: 2px solid var(--orange, #e8742c);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* ---- Button (.btn) ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: 12px; border: 2px solid var(--ink, #2b2118);
+  padding: 8px 16px; font: 600 16px/24px "Space Grotesk", system-ui, sans-serif;
+  user-select: none; cursor: pointer; text-decoration: none;
+  box-shadow: 3px 3px 0 var(--shadow, #2b2118);
+  transition: transform var(--dur-ui, 220ms) var(--ease-spring, cubic-bezier(.34,1.56,.64,1)),
+    box-shadow var(--dur-ui, 220ms) var(--ease-spring, cubic-bezier(.34,1.56,.64,1)),
+    background-color var(--dur-ui, 220ms), color var(--dur-ui, 220ms), opacity var(--dur-ui, 220ms);
+}
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--shadow, #2b2118); }
+.btn:active { transform: translate(2px, 2px) scale(0.98); box-shadow: 1px 1px 0 var(--shadow, #2b2118); transition-duration: var(--dur-press, 120ms); }
+.btn:disabled { opacity: 0.5; pointer-events: none; }
+.btn-primary { background: var(--orange, #e8742c); color: var(--on-orange, #fffaf0); }
+.btn-ghost { background: var(--paper, #fffaf0); color: var(--ink, #2b2118); }
+.btn-dark { background: var(--ink, #2b2118); color: var(--paper, #fffaf0); }
+.btn-sm { padding: 4px 10px; font-size: 14px; line-height: 20px; border-radius: 8px; box-shadow: 2px 2px 0 var(--shadow, #2b2118); }
+
+/* ---- Round header icon button ---- */
+.icon-btn {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9999px;
+  border: 2px solid var(--ink, #2b2118); background: var(--paper, #fffaf0); color: var(--ink, #2b2118);
+  font: 14px/1 "Special Elite", monospace; cursor: pointer;
+  transition: transform var(--dur-ui, 220ms) var(--ease-spring, cubic-bezier(.34,1.56,.64,1));
+}
+.icon-btn:hover { transform: translateY(-2px); }
+.icon-btn:active { transform: scale(0.9); }
+
+/* ---- Card ---- */
+.card { border-radius: 16px; border: 2px solid var(--ink, #2b2118); background: var(--paper, #fffaf0); box-shadow: 5px 5px 0 var(--shadow, #2b2118); }
+
+/* ---- Field: label + input ---- */
+.label { display: block; margin-bottom: 4px; font: 700 12px/16px "Space Grotesk", system-ui, sans-serif; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted, rgba(43, 33, 24, 0.7)); }
+.input {
+  box-sizing: border-box; width: 100%; border-radius: 8px; border: 2px solid var(--ink, #2b2118);
+  background: var(--field, #ffffff); color: var(--ink, #2b2118); padding: 8px 12px; outline: none;
+  font: 16px/24px "Space Grotesk", system-ui, sans-serif;
+  transition: box-shadow var(--dur-ui, 220ms) var(--ease-out, cubic-bezier(.22,1,.36,1)), border-color var(--dur-ui, 220ms);
+}
+.input:focus { box-shadow: 0 0 0 3px rgba(232, 116, 44, 0.35); }
+.field-error { margin-top: 6px; font-size: 14px; color: var(--cherry, #d1495b); }
+
+/* ---- Chip (toggle) ---- */
+.chip {
+  border-radius: 8px; border: 2px solid rgba(43, 33, 24, 0.2); background: transparent; color: var(--ink, #2b2118);
+  padding: 4px 10px; font: 14px/20px "Space Grotesk", system-ui, sans-serif; cursor: pointer;
+  transition: background-color var(--dur-ui, 220ms), color var(--dur-ui, 220ms), border-color var(--dur-ui, 220ms), transform var(--dur-ui, 220ms) var(--ease-spring, cubic-bezier(.34,1.56,.64,1));
+}
+.chip[data-on="true"] { border-color: var(--ink, #2b2118); background: var(--ink, #2b2118); color: var(--paper, #fffaf0); }
+.chip:active { transform: scale(0.94); transition-duration: var(--dur-press, 120ms); }
+
+/* ---- Swatch (colour picker dot) ---- */
+.swatch {
+  width: 28px; height: 28px; border-radius: 9999px; border: 2px solid rgba(43, 33, 24, 0.2); cursor: pointer; padding: 0;
+  transition: transform var(--dur-ui, 220ms) var(--ease-spring, cubic-bezier(.34,1.56,.64,1)), box-shadow var(--dur-ui, 220ms);
+}
+.swatch:hover { transform: scale(1.12); }
+.swatch[data-on="true"] { border-color: var(--ink, #2b2118); transform: scale(1.1); box-shadow: 0 0 0 2px var(--paper, #fffaf0), 0 0 0 4px var(--ink, #2b2118); }
+
+/* ---- Toast ---- */
+.toast {
+  display: inline-flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 12px;
+  border: 2px solid var(--ink, #2b2118); background: var(--ink, #2b2118); color: var(--paper, #fffaf0);
+  font: 600 14px/20px "Space Grotesk", system-ui, sans-serif; box-shadow: 3px 3px 0 var(--shadow, #2b2118);
+}
+.toast.is-error { background: var(--cherry, #d1495b); border-color: var(--ink, #2b2118); color: #fffaf0; }
+.toast button { font: inherit; text-decoration: underline; background: none; border: 0; color: inherit; cursor: pointer; padding: 0; }
+
+/* ---- Tabs (editor panel switcher) ---- */
+.tabs { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); border: 2px solid var(--ink, #2b2118); border-radius: 16px; overflow: hidden; background: var(--paper, #fffaf0); }
+.tabs .indicator { position: absolute; inset: 0 auto 0 0; width: calc(100% / 6); background: var(--ink, #2b2118); transition: transform 360ms var(--ease-spring, cubic-bezier(.34,1.56,.64,1)); }
+.tabs button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 0; border: 0; background: none; color: var(--ink, #2b2118); font: 600 11px/14px "Space Grotesk", sans-serif; cursor: pointer; }
+.tabs button span { font-size: 18px; line-height: 1; }
+.tabs button[aria-current="page"] { color: var(--paper, #fffaf0); }
+
+/* ---- Retro player ---- */
+.device {
+  border-radius: 28px; padding: 20px;
+  background: linear-gradient(160deg, var(--device-top, #f8f1e3) 0%, var(--device-bottom, #e7dbc3) 100%);
+  border: 2px solid #2b2118;
+  box-shadow: 6px 6px 0 #2b2118, inset 0 2px 0 rgba(255, 255, 255, 0.8), inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+  color: #2b2118;
+}
+.lcd {
+  position: relative; overflow: hidden; border-radius: 10px; padding: 12px 14px;
+  background: radial-gradient(ellipse at 30% 0%, var(--lcd-glow, #d3e0b4) 0%, var(--lcd, #b4c592) 70%);
+  color: var(--lcd-ink, #1f2a17); font: 22px/24px "VT323", monospace;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+.lcd::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 3px); }
+.hw-btn {
+  display: grid; place-items: center; border-radius: 9999px; border: 2px solid #2b2118; cursor: pointer;
+  background: linear-gradient(180deg, #fffaf0, #e6dbc5); color: #2b2118;
+  box-shadow: 0 4px 0 #2b2118, inset 0 2px 0 #fff;
+  transition: transform var(--dur-press, 120ms) var(--ease-out, cubic-bezier(.22,1,.36,1)), box-shadow var(--dur-press, 120ms);
+}
+.hw-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #2b2118, inset 0 2px 4px rgba(0, 0, 0, 0.15); }
+.hw-btn-primary { background: linear-gradient(180deg, #f39556, #e06a22); color: #fffaf0; box-shadow: 0 4px 0 #2b2118, inset 0 2px 0 rgba(255, 255, 255, 0.45); }
+.device-dark { background: linear-gradient(160deg, #2c2727 0%, #161313 100%); border-color: #000; box-shadow: 6px 6px 0 #000, inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -4px 0 rgba(0, 0, 0, 0.3); color: #efe6d6; }
+.device-dark .lcd { background: radial-gradient(ellipse at 30% 0%, #2a1d0c 0%, #140d05 75%); color: var(--lcd-amber, #ffb547); text-shadow: 0 0 6px rgba(255, 181, 71, 0.45); }
+.device-dark .hw-btn { background: linear-gradient(180deg, #3b3535, #211d1d); color: #efe6d6; border-color: #000; box-shadow: 0 4px 0 #000, inset 0 1px 0 rgba(255, 255, 255, 0.14); }
+.device-dark .hw-btn-primary { background: linear-gradient(180deg, #e0a04a, #b9741f); color: #160f06; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+</style>
+</head>
+<body id="top">
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">Tapiee<b>.</b></a>
+    <nav aria-label="Sections"><a href="#brand">Brand</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#space">Space &amp; shape</a><a href="#motion">Motion</a><a href="#components">Components</a><a href="#logo">Logo</a></nav>
+  </header>
+  <div class="cover-box"><div class="cover-scale"><div class="cover">
+  <!--
+    blocks: ink slab 160×288 (bleeds top + bottom), orange 304×176 radius-2xl (bleeds right), mustard band 300×40 radius-lg, cherry 40×40 radius-lg
+    arrangement: one tall ink slab with an orange deck to its right and a mustard band beneath, like a tape deck seen from the front
+    pattern: the cassette window — two reel discs (radius-full) cut from the ground inside an ink pill; chosen because a literal motif, the tape reel, is what Tapiee is
+    scales: gaps space-4 (16) and space-6 (24); radii radius-lg 8, radius-2xl 16, radius-full for reels and the window pill
+  -->
+  <svg class="art" viewBox="480 0 480 288" width="480" height="288" aria-hidden="true">
+    <rect class="ink tile-0" x="512" y="-16" width="160" height="320" />
+    <rect class="orange tile-2xl" x="688" y="40" width="304" height="176" />
+    <rect class="window" x="712" y="88" width="216" height="80" rx="40" />
+    <circle class="reel" cx="756" cy="128" r="28" />
+    <circle class="reel" cx="884" cy="128" r="28" />
+    <circle class="hub" cx="756" cy="128" r="9" />
+    <circle class="hub" cx="884" cy="128" r="9" />
+    <rect class="mustard tile-lg" x="688" y="232" width="300" height="40" />
+    <rect class="cherry tile-lg" x="536" y="232" width="40" height="40" />
+  </svg>
+  <div class="name">
+    <h1>Tapiee</h1>
+    <p>Make someone a mixtape: songs, a cassette you design, one link.</p>
+  </div>
+</div>
+<style>
+  .cover { position: relative; width: 960px; height: 288px; overflow: hidden; background: var(--cream, #f4ead5); }
+  .art { position: absolute; top: 0; left: 480px; }
+  .ink { fill: var(--ink, #2b2118); }
+  .orange { fill: var(--orange, #e8742c); }
+  .mustard { fill: var(--mustard, #f2b134); }
+  .cherry { fill: var(--cherry, #d1495b); }
+  .window { fill: var(--shadow, #2b2118); }
+  .reel { fill: var(--cream, #f4ead5); }
+  .hub { fill: var(--orange, #e8742c); }
+  .tile-0 { rx: 0; }
+  .tile-lg { rx: var(--radius-lg, 8px); }
+  .tile-2xl { rx: var(--radius-2xl, 16px); }
+  .name { position: absolute; left: 40px; bottom: 36px; max-width: 420px; }
+  .name h1 { margin: 0; font: 400 112px/0.95 "Shrikhand", serif; color: var(--ink, #2b2118); letter-spacing: -1px; }
+  .name p { margin: 16px 0 0; font: 400 14px/20px "Space Grotesk", system-ui, sans-serif; color: var(--ink-muted, rgba(43, 33, 24, 0.7)); }
+</style>
+</div></div>
+
+  <section id="brand"><h2><small>Design system</small>Brand book</h2><div class="prose"><p>Tapiee turns YouTube songs into a cassette mixtape that someone designs and sends with one link. Everything should feel like a handmade tape from the 90s: warm paper, chunky ink outlines, hard printed shadows, a little bounce. Build every screen from these tokens, styles and components.</p>
+<h4>Voice and copy</h4>
+<p>Tapiee talks like a friend who still makes mixtapes: warm, short, a little playful, never corporate.</p>
+<ul><li>Write in sentence case. Use "you" for the reader; the maker signs off as "Shubh" ("Built with ♡ by Shubh", "— Shubh ♡").</li><li>Lean on tape vocabulary where it fits: side A / side B, "the case", "open the case", "TAPE CHEWED" (not found), "TAPE JAMMED" (crash), "reading your songs…".</li><li>Buttons say exactly what happens and may end with a glyph: "Start your mixtape", "Make a mixtape →", "Save &amp; get link ✦", "↻ Try again", "Share this tape ↗".</li><li>Errors say what went wrong and what to do, with no blame and no apology: "YouTube didn't respond. Try again." · "The link might be mistyped, or the tape was deleted by the person who made it. Ask them to send the link again." · "Your saved tapes are safe."</li><li>Kicker labels are uppercase in the <code>eyebrow</code> style with middots: "STEP 1 · THE SONGS", "SOMEONE MADE YOU A MIXTAPE", "ERROR 404 · TAPE CHEWED".</li><li>Emoji only as functional icons (🎲 random palette, 🔊 sound, ✨ stickers tab), never as decoration in sentences.</li></ul>
+<h4>Colour</h4>
+<ul><li>Page ground is <code>cream</code> with the faint <code>dot</code> texture. Raised surfaces are <code>paper</code>. Inputs are <code>field</code>.</li><li>All text, borders and icons are <code>ink</code>; secondary text is <code>ink-muted</code>.</li><li><code>orange</code> is the one accent: primary buttons, eyebrows, the logo's full stop, the focus ring. <code>mustard</code> is the second accent for highlights and cassette stripes.</li><li><code>cherry</code> means error or remove. <code>teal</code>, <code>denim</code> and <code>brown</code> are for cassette art, stickers and illustrations, never for UI text (except <code>denim</code>, which reads at 6.79:1).</li><li>Two themes ship: <strong>Light (classic)</strong> and <strong>Dark</strong>. Every colour that changes between them is a token; never hard-code a light-only colour in a component.</li><li>Shared tapes always render in the creator's classic design, whatever theme the viewer uses (<code>.theme-classic</code> in the app).</li></ul>
+<p><strong>Contrast.</strong> Ink on cream, paper and field is 12.6:1 or better in both themes. Two light-theme pairs from the source fall short and are kept as they are:</p>
+<ul><li><code>orange</code> text on <code>cream</code> is 2.52:1. Use orange text only for large type (24px+) or short uppercase eyebrows, never for body copy.</li><li><code>on-orange</code> on <code>orange</code> (primary buttons) is 2.90:1. Labels stay 16px semibold. <code>ink</code> on <code>orange</code> (5.22:1) is the passing alternative.</li></ul>
+<p>In dark, both pairs pass (7.4:1 and 7.3:1).</p>
+<h5>Random palettes (🎲)</h5>
+<p>The 🎲 button applies one of nine curated palettes by overriding <code>cream</code>, <code>paper</code>, <code>ink</code>, <code>field</code>, <code>shadow</code>, <code>dot</code>, <code>orange</code> and <code>mustard</code> on the page (<code>lib/theme.ts</code>). They are not separate themes here; build with the tokens and they follow automatically.</p>
+<div class="table"><table><thead><tr><th>Palette</th><th>Mode</th><th>cream</th><th>paper</th><th>ink</th><th>orange (accent)</th><th>mustard</th></tr></thead><tbody><tr><td>Sage</td><td>light</td><td>#e7ebdd</td><td>#f6f7ef</td><td>#2c3a2c</td><td>#5f8a52</td><td>#c9ad5d</td></tr><tr><td>Lavender haze</td><td>light</td><td>#ebe6f2</td><td>#f9f7fc</td><td>#2d2540</td><td>#7d62b8</td><td>#d99ab9</td></tr><tr><td>Ocean ink</td><td>light</td><td>#e1eaed</td><td>#f5f9fa</td><td>#14303b</td><td>#2b7a90</td><td>#e3b064</td></tr><tr><td>Terracotta</td><td>light</td><td>#f2e2d4</td><td>#fbf2ea</td><td>#3a2118</td><td>#bd5a36</td><td>#dd9f52</td></tr><tr><td>Butter &amp; navy</td><td>light</td><td>#f4ecca</td><td>#fffaeb</td><td>#1e2a45</td><td>#2e4a8c</td><td>#e0ae32</td></tr><tr><td>Midnight plum</td><td>dark</td><td>#1a131f</td><td>#251b2c</td><td>#efe2f1</td><td>#c77dbb</td><td>#e3b56b</td></tr><tr><td>Forest night</td><td>dark</td><td>#111914</td><td>#1a251f</td><td>#e3eee5</td><td>#7fb58a</td><td>#d6b469</td></tr><tr><td>Espresso</td><td>dark</td><td>#19130f</td><td>#241b16</td><td>#f1e5d6</td><td>#d98a4a</td><td>#e5c078</td></tr><tr><td>Denim night</td><td>dark</td><td>#10161f</td><td>#18212d</td><td>#e4ebf3</td><td>#7aa5d6</td><td>#e0b467</td></tr></tbody></table></div>
+<h4>Type</h4>
+<p>All faces are Google Fonts, loaded by <code>app/fonts.ts</code>.</p>
+<ul><li><strong>Shrikhand</strong> (<code>display</code>): titles and the wordmark. Use <code>display-xl</code> / <code>display-lg</code> on wide screens and <code>display-md</code> on phones. Never for body text or buttons.</li><li><strong>Space Grotesk</strong> (<code>body</code>): everything you read and tap: <code>body-lg</code> for intros, <code>body</code>, <code>button</code> (600), <code>small</code>, <code>caption</code>, <code>label</code>.</li><li><strong>Special Elite</strong> (<code>type</code>): typewriter kickers and fine print: <code>eyebrow</code>, <code>meta</code>. Always uppercase with 0.1em tracking.</li><li><strong>Permanent Marker</strong> (<code>hand</code>): personal touches only, such as a signature or the note in the case.</li><li><strong>VT323</strong> (<code>pixel</code>): the player's LCD only.</li></ul>
+<p>Cassette and cover designs also offer these faces to tape makers: Caveat, Rock Salt, Gloria Hallelujah, Bungee, Pacifico, Playfair Display and Cormorant Garamond (italic). They belong to the tape art, not the app chrome.</p>
+<h4>Layout</h4>
+<ul><li>Content sits in a centred column, <code>max-width</code> 1024px (64rem), with a <code>space-4</code> side gutter.</li><li>Headers: the "Tapiee." wordmark on the left, round <code>IconButton</code>s on the right, <code>space-4</code> vertical padding.</li><li>Group things with gap, not margins: <code>space-2</code> inside controls, <code>space-3</code> between buttons, <code>space-6</code>–<code>space-8</code> between sections.</li><li>Phones first: everything works at 320px. Two-column layouts (Create page) collapse to one column below 768px, and both columns may shrink (<code>minmax(0, 1fr)</code>) so long song titles truncate instead of pushing the layout.</li><li>The footer is small and faded (60% opacity): "Built with ♡ by Shubh · v&lt;version&gt;" and "say hi on insta @subhashh.jadav ✌︎".</li></ul>
+<h4>Shape and depth</h4>
+<ul><li>Every interactive surface has a 2px <code>ink</code> border.</li><li>Corners: <code>radius-lg</code> (inputs, chips, small buttons), <code>radius-xl</code> (buttons), <code>radius-2xl</code> (cards, popovers), <code>radius-full</code> (icon buttons, swatches, player keys).</li><li>Shadows are hard and offset down-right with no blur: <code>shadow-sm</code> → <code>shadow-btn</code> → <code>shadow-card</code> → <code>shadow-device</code>. Never use blurred or coloured shadows.</li><li>Illustrations (cassettes, the spilled-tape error art) are flat inline SVG in token colours: no gradients except the player body and LCD.</li></ul>
+<h4>Motion</h4>
+<p>See the Motion section for every animation. In short: things lift on hover with <code>ease-spring</code>, press down quickly with <code>dur-press</code>, and enter with a short fade-up. Everything respects reduced motion.</p>
+<h4>Iconography</h4>
+<p>Tapiee has no icon library. It uses Unicode glyphs in the current text colour, and a few emoji where colour helps:</p>
+<div class="table"><table><thead><tr><th>Glyph</th><th>Meaning</th></tr></thead><tbody><tr><td>↗</td><td>share, open externally</td></tr><tr><td>→</td><td>go forward (end of a button label)</td></tr><tr><td>↻</td><td>try again, open the case</td></tr><tr><td>✦</td><td>save &amp; get link</td></tr><tr><td>☾ / ☀</td><td>switch to dark / light theme</td></tr><tr><td>🎲</td><td>random palette</td></tr><tr><td>🔊 / 🔇</td><td>sound on / off (also iPhone mute)</td></tr><tr><td>⠿</td><td>drag handle to reorder songs</td></tr><tr><td>▲ / ▼</td><td>move a song up / down</td></tr><tr><td>✕</td><td>remove</td></tr><tr><td>♫ 📼 🖼 💌 ✨ 🔗</td><td>editor tabs: Songs, Tape, Cover, Inside, Stickers, Share</td></tr><tr><td>♡</td><td>the maker's sign-off</td></tr></tbody></table></div>
+<p>Give every glyph-only button an <code>aria-label</code>.</p>
+<h4>Accessibility</h4>
+<ul><li>Keyboard focus: a solid 2px <code>orange</code> outline, 3px offset, on every button, link and input. Dark: 7.4:1 against <code>cream</code>. Light: 2.52:1, below the 3:1 focus-ring target; flagged.</li><li>Inputs also glow with <code>focus-glow</code> while focused.</li><li>Touch targets are at least 32px (icon buttons) and 40px for buttons.</li><li><code>prefers-reduced-motion: reduce</code> shortens every animation and transition to near zero.</li><li>Never rely on colour alone: errors include words, states include text or glyphs.</li></ul>
+<h4>YouTube</h4>
+<p>Songs play through YouTube's embedded player. Show YouTube as the source near the player, don't hide the player or play audio-only, and follow the YouTube API Services Developer Policies.</p>
+<h4>Logo</h4>
+<p>The mark is the cassette icon in <code>assets/Logos</code> (ink shell, cream label, orange stripe). The wordmark is "Tapiee." set in <code>logo</code> (Shrikhand 24px) with the full stop in <code>orange</code>. There is no separate wordmark file.</p></div></section>
+
+  <section id="colour"><h2><small>Tokens</small>Colour</h2><p class="legend">Each swatch shows <b>light</b> on top and <b>dark</b> below.</p><ul class="swatches"><li class="sw"><span class="chips"><i style="background:#f4ead5"></i><i style="background:#15110e"></i></span><span class="sw-text"><b>cream</b><code>#f4ead5 · #15110e</code><small>Page background behind everything, with the dot texture on top. Never use for cards; use paper.</small></span></li><li class="sw"><span class="chips"><i style="background:#fffaf0"></i><i style="background:#211a15"></i></span><span class="sw-text"><b>paper</b><code>#fffaf0 · #211a15</code><small>Cards, panels, ghost buttons, popovers and the About card.</small></span></li><li class="sw"><span class="chips"><i style="background:#ffffff"></i><i style="background:#2a221c"></i></span><span class="sw-text"><b>field</b><code>#ffffff · #2a221c</code><small>Inside text inputs and search boxes only.</small></span></li><li class="sw"><span class="chips"><i style="background:#2b2118"></i><i style="background:#efe6d8"></i></span><span class="sw-text"><b>ink</b><code>#2b2118 · #efe6d8</code><small>All text, borders and icons on cream, paper and field (13:1 or better in both themes). Also the fill of dark buttons.</small></span></li><li class="sw"><span class="chips"><i style="background:rgba(43, 33, 24, 0.7)"></i><i style="background:rgba(239, 230, 216, 0.7)"></i></span><span class="sw-text"><b>ink-muted</b><code>rgba(43, 33, 24, 0.7) · rgba(239, 230, 216, 0.7)</code><small>Secondary text: helper lines, song artists, field labels. Matches Tailwind text-ink/70.</small></span></li><li class="sw"><span class="chips"><i style="background:#2b2118"></i><i style="background:#000000"></i></span><span class="sw-text"><b>shadow</b><code>#2b2118 · #000000</code><small>Colour of the hard offset shadows under buttons, cards and the player.</small></span></li><li class="sw"><span class="chips"><i style="background:rgba(107, 66, 38, 0.06)"></i><i style="background:rgba(255, 236, 210, 0.05)"></i></span><span class="sw-text"><b>dot</b><code>rgba(107, 66, 38, 0.06) · rgba(255, 236, 210, 0.05)</code><small>The faint two-layer dot texture on the page background (7px and 11px grids).</small></span></li><li class="sw"><span class="chips"><i style="background:#e8742c"></i><i style="background:#ec8a4b"></i></span><span class="sw-text"><b>orange</b><code>#e8742c · #ec8a4b</code><small>Primary accent: primary buttons, eyebrow labels, the logo's full stop, focus ring, active progress. Light theme: orange text on cream is 2.52:1 and fails body-text contrast; use it for large or decorative text only.</small></span></li><li class="sw"><span class="chips"><i style="background:#fffaf0"></i><i style="background:#1a120c"></i></span><span class="sw-text"><b>on-orange</b><code>#fffaf0 · #1a120c</code><small>Text on orange fills (primary buttons). Light value is the source's choice at 2.90:1, below 4.5:1; ink on orange would pass at 5.22:1. Dark passes at 7.31:1.</small></span></li><li class="sw"><span class="chips"><i style="background:#f2b134"></i><i style="background:#d9a441"></i></span><span class="sw-text"><b>mustard</b><code>#f2b134 · #d9a441</code><small>Secondary accent: cassette stripes, highlights, side A labels. Ink on mustard is 8.33:1.</small></span></li><li class="sw"><span class="chips"><i style="background:#d1495b"></i><i style="background:#d1495b"></i></span><span class="sw-text"><b>cherry</b><code>#d1495b</code><small>Errors and destructive actions (remove song, form errors), the ♡ in the footer. 4.19:1 on paper: use at 14px semibold or larger.</small></span></li><li class="sw"><span class="chips"><i style="background:#2a9d8f"></i><i style="background:#2a9d8f"></i></span><span class="sw-text"><b>teal</b><code>#2a9d8f</code><small>Cassette art and sticker colour only. 3.19:1 on paper, so never for text.</small></span></li><li class="sw"><span class="chips"><i style="background:#3d5a80"></i><i style="background:#3d5a80"></i></span><span class="sw-text"><b>denim</b><code>#3d5a80</code><small>Cassette art, side B labels. 6.79:1 on paper.</small></span></li><li class="sw"><span class="chips"><i style="background:#6b4226"></i><i style="background:#6b4226"></i></span><span class="sw-text"><b>brown</b><code>#6b4226</code><small>Tape ribbon in illustrations, cassette shells. 7.23:1 on cream.</small></span></li><li class="sw"><span class="chips"><i style="background:#f8f1e3"></i><i style="background:#f8f1e3"></i></span><span class="sw-text"><b>device-top</b><code>#f8f1e3</code><small>Top of the light retro player's body gradient (to device-bottom).</small></span></li><li class="sw"><span class="chips"><i style="background:#e7dbc3"></i><i style="background:#e7dbc3"></i></span><span class="sw-text"><b>device-bottom</b><code>#e7dbc3</code><small>Bottom of the light retro player's body gradient.</small></span></li><li class="sw"><span class="chips"><i style="background:#d3e0b4"></i><i style="background:#d3e0b4"></i></span><span class="sw-text"><b>lcd-glow</b><code>#d3e0b4</code><small>Highlight of the green LCD screen gradient (to lcd).</small></span></li><li class="sw"><span class="chips"><i style="background:#b4c592"></i><i style="background:#b4c592"></i></span><span class="sw-text"><b>lcd</b><code>#b4c592</code><small>Green LCD screen on the light player.</small></span></li><li class="sw"><span class="chips"><i style="background:#1f2a17"></i><i style="background:#1f2a17"></i></span><span class="sw-text"><b>lcd-ink</b><code>#1f2a17</code><small>Pixel text on the green LCD.</small></span></li><li class="sw"><span class="chips"><i style="background:#ffb547"></i><i style="background:#ffb547"></i></span><span class="sw-text"><b>lcd-amber</b><code>#ffb547</code><small>Glowing pixel text on the dark player's amber LCD.</small></span></li></ul></section>
+
+  <section id="type"><h2><small>Tokens</small>Type</h2><div class="type-row"><div class="type-meta"><b>display-xl</b><code>60px / 60px · 400</code><small>Display · Home hero headline on wide screens (text-6xl).</small></div><div class="type-sample" style="font-family:'Shrikhand', serif;font-size:60px;line-height:60px;font-weight:400">Make someone a mixtape.</div></div><div class="type-row"><div class="type-meta"><b>display-lg</b><code>48px / 48px · 400</code><small>Display · Page titles on wide screens (text-5xl), error page titles.</small></div><div class="type-sample" style="font-family:'Shrikhand', serif;font-size:48px;line-height:48px;font-weight:400">What's on the tape?</div></div><div class="type-row"><div class="type-meta"><b>display-md</b><code>36px / 40px · 400</code><small>Display · Page titles on phones (text-4xl).</small></div><div class="type-sample" style="font-family:'Shrikhand', serif;font-size:36px;line-height:40px;font-weight:400">This mixtape got lost</div></div><div class="type-row"><div class="type-meta"><b>logo</b><code>24px / 32px · 400</code><small>Display · The wordmark in every header, with the full stop in orange.</small></div><div class="type-sample" style="font-family:'Shrikhand', serif;font-size:24px;line-height:32px;font-weight:400">Tapiee.</div></div><div class="type-row"><div class="type-meta"><b>body-lg</b><code>18px / 28px · 400</code><small>Text · Intro paragraphs under page titles (text-lg).</small></div><div class="type-sample" style="font-family:'Space Grotesk', system-ui, sans-serif;font-size:18px;line-height:28px;font-weight:400">Turn your favourite YouTube songs into a cassette.</div></div><div class="type-row"><div class="type-meta"><b>body</b><code>16px / 24px · 400</code><small>Text · Default running text.</small></div><div class="type-sample" style="font-family:'Space Grotesk', system-ui, sans-serif;font-size:16px;line-height:24px;font-weight:400">The link might be mistyped, or the tape was deleted.</div></div><div class="type-row"><div class="type-meta"><b>button</b><code>16px / 24px · 600</code><small>Text · Button labels (font-semibold).</small></div><div class="type-sample" style="font-family:'Space Grotesk', system-ui, sans-serif;font-size:16px;line-height:24px;font-weight:600">Make a mixtape →</div></div><div class="type-row"><div class="type-meta"><b>small</b><code>14px / 20px · 400</code><small>Text · Song titles in lists, helper text, small buttons (text-sm).</small></div><div class="type-sample" style="font-family:'Space Grotesk', system-ui, sans-serif;font-size:14px;line-height:20px;font-weight:400">Works with youtube.com, youtu.be and public playlists</div></div><div class="type-row"><div class="type-meta"><b>caption</b><code>12px / 16px · 400</code><small>Text · Footer, artist names, release notes (text-xs).</small></div><div class="type-sample" style="font-family:'Space Grotesk', system-ui, sans-serif;font-size:12px;line-height:16px;font-weight:400">Built with ♡ by Shubh · v1.13.0</div></div><div class="type-row"><div class="type-meta"><b>label</b><code>12px / 16px · 700</code><small>Text · Form field labels: set in uppercase, ink-muted (the .label class).</small></div><div class="type-sample" style="font-family:'Space Grotesk', system-ui, sans-serif;font-size:12px;line-height:16px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase">COVER TITLE</div></div><div class="type-row"><div class="type-meta"><b>eyebrow</b><code>14px / 20px · 400</code><small>Typewriter · Uppercase kicker above titles, usually in orange; error codes (ERROR 404 · TAPE CHEWED).</small></div><div class="type-sample" style="font-family:'Special Elite', monospace;font-size:14px;line-height:20px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase">STEP 1 · THE SONGS</div></div><div class="type-row"><div class="type-meta"><b>meta</b><code>12px / 16px · 400</code><small>Typewriter · Side labels, cassette fine print, version numbers, the player's brand line.</small></div><div class="type-sample" style="font-family:'Special Elite', monospace;font-size:12px;line-height:16px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase">SIDE A · TYPE I · NORMAL</div></div><div class="type-row"><div class="type-meta"><b>hand</b><code>18px / 28px · 400</code><small>Handwriting · Personal touches: the About note signature, the note inside the case.</small></div><div class="type-sample" style="font-family:'Permanent Marker', cursive;font-size:18px;line-height:28px;font-weight:400">— Shubh ♡</div></div><div class="type-row"><div class="type-meta"><b>lcd</b><code>22px / 24px · 400</code><small>Pixel · Text on the retro player's LCD screen only.</small></div><div class="type-sample" style="font-family:'VT323', monospace;font-size:22px;line-height:24px;font-weight:400">SIDE A · 01/08  White Mustang</div></div></section>
+
+  <section id="space"><h2><small>Tokens</small>Space &amp; shape</h2>
+    <h3>Spacing</h3><ul class="scale"><li><span class="viz"><i class="bar" style="width:4px"></i></span><b>space-1</b><code>4px</code><small>Tight gaps between icon buttons (gap-1).</small></li><li><span class="viz"><i class="bar" style="width:6px"></i></span><b>space-1-5</b><code>6px</code><small>Header icon button gap on phones (gap-1.5).</small></li><li><span class="viz"><i class="bar" style="width:8px"></i></span><b>space-2</b><code>8px</code><small>Button inner gap, button vertical padding (py-2), chip groups.</small></li><li><span class="viz"><i class="bar" style="width:12px"></i></span><b>space-3</b><code>12px</code><small>Input horizontal padding, gaps between buttons in a row.</small></li><li><span class="viz"><i class="bar" style="width:16px"></i></span><b>space-4</b><code>16px</code><small>Page side gutter (px-4), button horizontal padding, card padding on phones.</small></li><li><span class="viz"><i class="bar" style="width:24px"></i></span><b>space-6</b><code>24px</code><small>Space under intro paragraphs, panel padding.</small></li><li><span class="viz"><i class="bar" style="width:32px"></i></span><b>space-8</b><code>32px</code><small>Gap between the two Create-page columns, section spacing.</small></li><li><span class="viz"><i class="bar" style="width:40px"></i></span><b>space-10</b><code>40px</code><small>Large section breaks on wide screens.</small></li></ul>
+    <h3>Radius</h3><ul class="scale"><li><span class="viz"><i class="box" style="border-radius:8px"></i></span><b>radius-lg</b><code>8px</code><small>Inputs, small buttons (btn-sm), chips, song thumbnails.</small></li><li><span class="viz"><i class="box" style="border-radius:10px"></i></span><b>radius-lcd</b><code>10px</code><small>The retro player's LCD screen; also the focus ring's rounding.</small></li><li><span class="viz"><i class="box" style="border-radius:12px"></i></span><b>radius-xl</b><code>12px</code><small>Buttons (btn), song rows in the editor.</small></li><li><span class="viz"><i class="box" style="border-radius:16px"></i></span><b>radius-2xl</b><code>16px</code><small>Cards, panels, popovers, the About card.</small></li><li><span class="viz"><i class="box" style="border-radius:9999px"></i></span><b>radius-full</b><code>9999px</code><small>Round icon buttons, player hardware buttons, swatches, the side A/B switch.</small></li></ul>
+    <h3>Shadows</h3><ul class="scale"><li><span class="viz"><i class="box" style="box-shadow:var(--shadow-sm)"></i></span><b>shadow-sm</b><code>2px 2px 0 #2b2118</code><small>Small buttons (btn-sm).</small></li><li><span class="viz"><i class="box" style="box-shadow:var(--shadow-btn)"></i></span><b>shadow-btn</b><code>3px 3px 0 #2b2118</code><small>Buttons at rest.</small></li><li><span class="viz"><i class="box" style="box-shadow:var(--shadow-btn-hover)"></i></span><b>shadow-btn-hover</b><code>4px 4px 0 #2b2118</code><small>Buttons on hover, lifted 1px up and left.</small></li><li><span class="viz"><i class="box" style="box-shadow:var(--shadow-btn-press)"></i></span><b>shadow-btn-press</b><code>1px 1px 0 #2b2118</code><small>Buttons while pressed, pushed 2px down and right.</small></li><li><span class="viz"><i class="box" style="box-shadow:var(--shadow-card)"></i></span><b>shadow-card</b><code>5px 5px 0 #2b2118</code><small>Cards, panels, the Your tape list.</small></li><li><span class="viz"><i class="box" style="box-shadow:var(--shadow-device)"></i></span><b>shadow-device</b><code>6px 6px 0 #2b2118</code><small>The retro player body.</small></li><li><span class="viz"><i class="box" style="box-shadow:var(--focus-glow)"></i></span><b>focus-glow</b><code>0 0 0 3px rgba(232, 116, 44, 0.35)</code><small>Input focus glow (in addition to the keyboard focus ring).</small></li></ul>
+  </section>
+
+  <section id="motion"><h2><small>Tokens</small>Motion</h2><div class="table"><table><thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead><tbody><tr><td><code>dur-press</code></td><td><code>120ms</code></td><td>Press-down feedback on buttons, chips and swatches.</td></tr><tr><td><code>dur-ui</code></td><td><code>220ms</code></td><td>Hover lifts, colour changes, focus glow.</td></tr><tr><td><code>dur-move</code></td><td><code>400ms</code></td><td>Things that travel: list reorders, panels.</td></tr><tr><td><code>ease-out</code></td><td><code>cubic-bezier(0.22, 1, 0.36, 1)</code></td><td>Fast start, soft landing: entrances, presses, fades.</td></tr><tr><td><code>ease-spring</code></td><td><code>cubic-bezier(0.34, 1.56, 0.64, 1)</code></td><td>Slight overshoot: hover lifts, pop-ins, the tab indicator, stickers.</td></tr></tbody></table></div><div class="prose"><p>Motion makes Tapiee feel physical, like pressing real buttons on a tape deck. Only <code>transform</code> and <code>opacity</code> animate. Use the <code>duration</code> and <code>easing</code> tokens.</p>
+<h3>Interaction</h3>
+<div class="table"><table><thead><tr><th>What</th><th>How</th></tr></thead><tbody><tr><td>Button hover</td><td>lifts 1px up-left, shadow grows to <code>shadow-btn-hover</code>, <code>dur-ui</code> · <code>ease-spring</code></td></tr><tr><td>Button press</td><td>moves 2px down-right at 98% scale, shadow <code>shadow-btn-press</code>, <code>dur-press</code> · <code>ease-out</code></td></tr><tr><td>Icon button</td><td>hover lifts 2px, press shrinks to 90%</td></tr><tr><td>Chip, swatch press</td><td>shrink to 94%, <code>dur-press</code></td></tr><tr><td>Swatch hover</td><td>grows to 112%, <code>ease-spring</code></td></tr><tr><td>Player keys</td><td>travel down 3px onto their shadow, <code>dur-press</code></td></tr><tr><td>Input focus</td><td><code>focus-glow</code> fades in, <code>dur-ui</code> · <code>ease-out</code></td></tr></tbody></table></div>
+<h3>Entrances and exits</h3>
+<div class="table"><table><thead><tr><th>Name</th><th>Motion</th><th>Used for</th></tr></thead><tbody><tr><td><code>page-in</code></td><td>fade up 6px, 450ms <code>ease-out</code></td><td>every page's <code>main</code></td></tr><tr><td><code>pop-in</code></td><td>fade up 12px from 97% scale, 420ms <code>ease-spring</code></td><td>cards, popovers, error screens</td></tr><tr><td><code>panel-in</code></td><td>fade up 8px, 320ms <code>ease-out</code></td><td>editor panels when switching tabs</td></tr><tr><td><code>row-in</code></td><td>fade up 8px from 98%, 340ms, staggered 25–35ms per row</td><td>song rows, search results</td></tr><tr><td><code>sticker-pop</code></td><td>30% → 108% → 100% scale, 420ms <code>ease-spring</code></td><td>stickers placed on the tape</td></tr><tr><td><code>toast-in</code> / <code>toast-out</code></td><td>slide up 14px in, down 10px out</td><td>toasts</td></tr><tr><td><code>title-roll</code></td><td>rolls up through, 900ms</td><td>"reading your songs…"</td></tr></tbody></table></div>
+<h3>Ambient</h3>
+<ul><li>Cassette reels spin (<code>reel-spin</code>, 1.8s linear) only while music plays, and spin up and down like a motor.</li><li>The hero cassette floats gently (<code>float</code>, 6s).</li><li>The LCD title scrolls (<code>marquee</code>, 12s) when it is too long to fit.</li><li>Equaliser bars bounce (<code>eq</code>) during playback.</li></ul>
+<h3>Transitions between states</h3>
+<ul><li>Theme change: the new theme spreads out as a circle from the pressed button (View Transitions).</li><li>Reordering songs: rows glide to their new places (FLIP). While dragging with ⠿, neighbours slide aside on 160ms ease.</li><li>Removing a row: it fades and collapses its height.</li><li>The editor tab indicator slides under the active tab, 360ms <code>ease-spring</code>.</li></ul>
+<h3>Reduced motion</h3>
+<p>With <code>prefers-reduced-motion: reduce</code>, every animation and transition drops to 0.01ms and plays once. Nothing important may depend on an animation finishing.</p></div></section>
+
+  <section id="components"><h2><small>Library</small>Components</h2><article class="comp" id="c-button"><h3>Button</h3><div class="ds-preview"><div style="padding:20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+  <button class="btn btn-primary">Make a mixtape →</button>
+  <button class="btn btn-ghost">Go home</button>
+  <button class="btn btn-dark">Save &amp; get link ✦</button>
+  <button class="btn btn-ghost btn-sm">↗ Share</button>
+  <button class="btn btn-primary" disabled>Saving…</button></div>
+</div><div class="prose"><p>The chunky retro button: a 2px ink border, 12px corners and a hard offset shadow that lifts on hover and presses flat when clicked.</p>
+<p><strong>Classes:</strong> <code>btn</code> plus one fill, optionally <code>btn-sm</code>.</p>
+<div class="table"><table><thead><tr><th>Variant</th><th>Use</th></tr></thead><tbody><tr><td><code>btn-primary</code></td><td>The one main action on a screen: "Start your mixtape", "Make a mixtape →", "↻ Try again". Fill <code>orange</code>, text <code>on-orange</code>.</td></tr><tr><td><code>btn-ghost</code></td><td>Secondary actions next to a primary one: "Go home", "Share this tape ↗". Fill <code>paper</code>.</td></tr><tr><td><code>btn-dark</code></td><td>Strong actions inside panels: "Save &amp; get link ✦", "Copy". Fill <code>ink</code>, text <code>paper</code>.</td></tr><tr><td><code>btn-sm</code></td><td>Compact header buttons: "Make one", "↗ Share". Radius <code>radius-lg</code>, <code>shadow-sm</code>.</td></tr></tbody></table></div>
+<p><strong>The consumer provides</strong> the label (sentence case, may end with an arrow or glyph: → ↗ ↻ ✦) and the click handler. Disabled buttons fade to 50% and ignore taps.</p>
+<p><strong>Do</strong></p>
+<ul><li>Use one <code>btn-primary</code> per view.</li><li>Say exactly what happens: "Save &amp; get link", not "Submit".</li><li>Keep the motion: hover lifts 1px with <code>shadow-btn-hover</code>, press pushes 2px with <code>shadow-btn-press</code> over <code>dur-press</code>.</li></ul>
+<p><strong>Don't</strong></p>
+<ul><li>Don't add blur shadows or gradients: Tapiee's shadows are hard and flat.</li><li>Light theme: <code>on-orange</code> on <code>orange</code> is 2.90:1. Keep primary labels at 16px semibold or larger; consider ink text if contrast must pass AA.</li></ul></div></article>
+<article class="comp" id="c-iconbutton"><h3>IconButton</h3><div class="ds-preview"><div style="padding:20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+  <span class="logo">Tapiee<b>.</b></span>
+  <span style="flex:1"></span>
+  <button class="icon-btn" aria-label="About Tapiee">i</button>
+  <button class="icon-btn" aria-label="Dark theme">☾</button>
+  <button class="icon-btn" aria-label="Random palette">🎲</button>
+  <button class="icon-btn" aria-label="Sound on">🔊</button></div>
+</div><div class="prose"><p>A 32px round button with a single glyph, used in the site header for About (ⓘ), theme (☾ / ☀), random palette (🎲) and sound (🔊 / 🔇).</p>
+<p><strong>The consumer provides</strong> the glyph and an <code>aria-label</code> that names the action ("About Tapiee", "Dark theme"). The glyph alone is never the accessible name.</p>
+<ul><li>Border <code>ink</code> 2px, fill <code>paper</code>, radius <code>radius-full</code>.</li><li>Hover lifts 2px on <code>ease-spring</code>; press shrinks to 90%.</li><li>Header order, left to right after the logo: About, theme, random, sound, then any page button such as "Make one".</li><li>Gap between icon buttons is <code>space-1-5</code> on phones, <code>space-2</code> from 640px.</li></ul></div></article>
+<article class="comp" id="c-field"><h3>Field</h3><div class="ds-preview"><div style="padding:20px;display:grid;gap:18px;max-width:420px">
+  <div><label class="label" for="t">Cover title</label><input id="t" class="input" value="beginning at midnight"></div>
+  <div><label class="label" for="s">Search songs</label><input id="s" class="input" placeholder="Search songs or paste a YouTube link">
+  <p class="field-error">YouTube didn't respond. Try again.</p></div>
+</div>
+</div><div class="prose"><p>A text input with its label, used for tape titles, the note, and the song search box.</p>
+<ul><li>Label: the <code>label</code> text style, uppercase, <code>ink-muted</code>, 4px above the input.</li><li>Input: <code>field</code> fill, 2px <code>ink</code> border, <code>radius-lg</code>, 8px × 12px padding, <code>body</code> text.</li><li>Focus adds <code>focus-glow</code> (a soft orange ring) on <code>ease-out</code>, plus the global keyboard focus ring.</li><li>Errors sit right under the field in <code>cherry</code> at 14px: say what went wrong and what to do ("YouTube didn't respond. Try again."). Keep the typed text.</li></ul>
+<p><strong>The consumer provides</strong> the label text, the value, the placeholder (an example, not instructions), and any error message.</p></div></article>
+<article class="comp" id="c-chip"><h3>Chip</h3><div class="ds-preview"><div style="padding:20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+  <button class="chip" data-on="true">Sunburst</button>
+  <button class="chip">Grid</button>
+  <button class="chip">Stripes</button>
+  <button class="chip">Dots</button>
+  <button class="chip">Plain</button></div>
+</div><div class="prose"><p>A small toggle button for picking one option from a short set: cover patterns, fonts, scenes in the editor.</p>
+<ul><li>Off: transparent with a faint ink border (20%). On (<code>data-on="true"</code>): filled <code>ink</code> with <code>paper</code> text.</li><li>Press shrinks it to 94% over <code>dur-press</code>.</li><li>Use a row of chips for 2–8 options. More than that, use a list.</li></ul>
+<p><strong>The consumer provides</strong> the option labels and which one is on (also set <code>aria-pressed</code>).</p></div></article>
+<article class="comp" id="c-swatch"><h3>Swatch</h3><div class="ds-preview"><div style="padding:20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+  <button class="swatch" style="background:#e8742c" data-on="true" aria-label="Orange"></button>
+  <button class="swatch" style="background:#f2b134" aria-label="Mustard"></button>
+  <button class="swatch" style="background:#d1495b" aria-label="Cherry"></button>
+  <button class="swatch" style="background:#2a9d8f" aria-label="Teal"></button>
+  <button class="swatch" style="background:#3d5a80" aria-label="Denim"></button>
+  <button class="swatch" style="background:#6b4226" aria-label="Brown"></button></div>
+</div><div class="prose"><p>A 28px round colour button for cassette and cover colours in the editor.</p>
+<ul><li>Selected (<code>data-on="true"</code>): ink border, 110% scale and a double ring (<code>paper</code> then <code>ink</code>) so the choice reads on any colour.</li><li>Hover grows it to 112% on <code>ease-spring</code>.</li><li>Always give each swatch an <code>aria-label</code> with the colour's name.</li></ul>
+<p><strong>The consumer provides</strong> the colour, its name, and the selected state.</p></div></article>
+<article class="comp" id="c-card"><h3>Card</h3><div class="ds-preview"><div style="padding:20px 26px 26px">
+  <div class="card" style="padding:20px;max-width:360px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="logo">Tapiee<b>.</b></span><span class="t-eyebrow" style="font-size:12px">v1.13.0</span></div>
+    <p style="margin:10px 0 0;font-size:14px;line-height:20px" class="t-muted">Hey! I made Tapiee so sending songs to someone feels special again — not just another link in the chat.</p>
+    <p class="t-hand" style="margin:12px 0 0;text-align:right">— Shubh ♡</p>
+  </div>
+</div>
+</div><div class="prose"><p>The raised paper surface for panels, popovers, the "Your tape" list and the About card.</p>
+<ul><li><code>paper</code> fill, 2px <code>ink</code> border, <code>radius-2xl</code>, <code>shadow-card</code> (5px hard offset).</li><li>Inner padding <code>space-4</code> on phones, <code>space-6</code> on wider screens.</li><li>Popovers (About, Share menu) use the same card at 4px shadow and pop in with the <code>pop-in</code> motion.</li></ul>
+<p><strong>The consumer provides</strong> the content. Don't nest cards inside cards; use a dashed <code>ink</code> divider at 15% instead.</p></div></article>
+<article class="comp" id="c-toast"><h3>Toast</h3><div class="ds-preview"><div style="padding:20px;display:grid;gap:12px;justify-items:start">
+  <span class="toast">Saved ✓</span>
+  <span class="toast">Added 4 songs · 1 already picked <button>Undo</button></span>
+  <span class="toast is-error">Couldn't save. Try again.</span>
+</div>
+</div><div class="prose"><p>A short message that slides up at the bottom centre after an action, then leaves on its own.</p>
+<ul><li>Success: <code>ink</code> fill, <code>paper</code> text, <code>shadow-btn</code>. Error: <code>cherry</code> fill.</li><li>Enters with <code>toast-in</code> (slide up 14px, <code>ease-spring</code>), leaves with <code>toast-out</code>.</li><li>Keep it to one line. State the result in past tense ("Saved ✓", "Copied!"), or what failed and what to do.</li><li>An optional action (Undo) is an underlined text button inside the toast.</li></ul>
+<p><strong>The consumer provides</strong> the message, success or error, and an optional action.</p></div></article>
+<article class="comp" id="c-tabs"><h3>Tabs</h3><div class="ds-preview"><div style="padding:20px;max-width:560px">
+  <div class="tabs">
+    <i class="indicator" style="transform:translateX(0%)"></i>
+    <button aria-current="page"><span>♫</span>Songs</button>
+    <button><span>📼</span>Tape</button>
+    <button><span>🖼</span>Cover</button>
+    <button><span>💌</span>Inside</button>
+    <button><span>✨</span>Stickers</button>
+    <button><span>🔗</span>Share</button>
+  </div>
+</div>
+</div><div class="prose"><p>The editor's six-panel switcher (Songs, Tape, Cover, Inside, Stickers, Share), each tab an icon over a word: ♫ 📼 🖼 💌 ✨ 🔗.</p>
+<ul><li>A solid <code>ink</code> indicator slides under the active tab on <code>ease-spring</code> (360ms); the active label turns <code>paper</code>.</li><li>Mark the active tab with <code>aria-current="page"</code>.</li><li>Switching panels plays <code>panel-in</code> (fade up 8px).</li></ul>
+<p><strong>The consumer provides</strong> the tabs (glyph + word) and the active one. Keep it to six or fewer so labels fit on a 320px phone.</p></div></article>
+<article class="comp" id="c-retroplayer"><h3>RetroPlayer</h3><div class="ds-preview"><div style="padding:20px 26px 28px;display:flex;flex-wrap:wrap;gap:28px">
+  <div class="device" style="width:250px">
+    <div class="t-eyebrow" style="color:#2b2118;font-size:11px;display:flex;justify-content:space-between"><span>TAPIEE · MX-90</span><span>STEREO</span></div>
+    <div class="lcd" style="margin-top:12px"><div style="font-size:16px">SIDE A · 01/04</div>White Mustang<div style="font-size:16px;opacity:.75">Lana Del Rey</div></div>
+    <div style="display:flex;justify-content:center;gap:14px;margin-top:16px">
+      <button class="hw-btn" style="width:44px;height:44px" aria-label="Previous">⏮</button>
+      <button class="hw-btn hw-btn-primary" style="width:56px;height:56px" aria-label="Play">▶</button>
+      <button class="hw-btn" style="width:44px;height:44px" aria-label="Next">⏭</button>
+    </div>
+  </div>
+  <div class="device device-dark" style="width:250px">
+    <div class="t-eyebrow" style="color:#efe6d6;font-size:11px;display:flex;justify-content:space-between"><span>TAPIEE · MX-90</span><span>STEREO</span></div>
+    <div class="lcd" style="margin-top:12px"><div style="font-size:16px">SIDE A · 01/08</div>Gehra Hua<div style="font-size:16px;opacity:.75">Arijit Singh</div></div>
+    <div style="display:flex;justify-content:center;gap:14px;margin-top:16px">
+      <button class="hw-btn" style="width:44px;height:44px" aria-label="Previous">⏮</button>
+      <button class="hw-btn hw-btn-primary" style="width:56px;height:56px" aria-label="Play">▶</button>
+      <button class="hw-btn" style="width:44px;height:44px" aria-label="Next">⏭</button>
+    </div>
+  </div>
+</div>
+</div><div class="prose"><p>The walkman-style music player on shared tapes: a body, an LCD screen, hardware-style buttons, and a side A/B switch.</p>
+<ul><li>Light body: gradient <code>device-top</code> → <code>device-bottom</code>, <code>shadow-device</code>. Dark body (<code>device-dark</code>) for dark backdrops.</li><li>LCD: green (<code>lcd</code>, <code>lcd-ink</code>) on light; amber (<code>lcd-amber</code>) glowing on dark, with faint scanlines. Text uses the <code>lcd</code> style (VT323).</li><li>Hardware buttons sit on a 4px solid shadow and travel down 3px when pressed over <code>dur-press</code>. Play is the orange <code>hw-btn-primary</code>.</li><li>The LCD shows side and track ("SIDE A · 01/08"), the title (scrolls when long) and the artist.</li><li>iPhone/iPad show a mute button instead of the volume slider, because iOS ignores web volume changes.</li></ul>
+<p><strong>The consumer provides</strong> the tracks, the current side and track, and play state. The YouTube video plays inside the player (see the compliance note in the README).</p></div></article></section>
+
+  <section id="logo"><h2><small>Assets</small>Logo</h2><div class="logo-row"><svg class="mark" aria-label="Tapiee logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="2" y="12" width="60" height="40" rx="7" fill="#2b2118"/>
+  <rect x="7" y="16" width="50" height="22" rx="3" fill="#f4ead5"/>
+  <rect x="7" y="31" width="50" height="3" fill="#e8742c"/>
+  <rect x="17" y="21" width="30" height="11" rx="5.5" fill="#2b2118"/>
+  <circle cx="23" cy="26.5" r="3.6" fill="#f4ead5"/>
+  <circle cx="41" cy="26.5" r="3.6" fill="#f4ead5"/>
+  <path d="M18 52 L21 43 H43 L46 52 Z" fill="#4a3a2e"/>
+</svg>
+<span class="wordmark">Tapiee<b>.</b></span></div><div class="prose"><ul><li><code>tapiee-icon.svg</code>: the cassette mark, copied from the app's <code>app/icon.svg</code> (the browser-tab icon). Fixed colours: shell #2b2118 (<code>ink</code>), label #f4ead5 (<code>cream</code>), stripe #e8742c (<code>orange</code>), window #2b2118, base #4a3a2e. It does not change with the theme, so place it on light grounds (<code>cream</code>, <code>paper</code>) or give it a light plate on dark ones.</li><li>There is no wordmark file. Set "Tapiee." in the <code>logo</code> text style with the full stop in <code>orange</code>.</li></ul></div></section>
+
+  <footer>Tapiee · built with ♡ by Shubh · <a href="/">make a mixtape</a> · <a href="/tech-doc">how it works</a></footer>
+  <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+</div>
+</body>
+</html>
