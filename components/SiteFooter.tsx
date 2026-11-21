@@ -19,6 +19,7 @@ export function SiteFooter({ className = "" }: { className?: string }) {
         </a>{" "}
         ✌︎
       </p>
+      <p className="mt-1">© 2026 Tapiee. All rights reserved.</p>
     </footer>
   );
 }
